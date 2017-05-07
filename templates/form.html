@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <title>{{ title }}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='list.css') }}">
+</head>
+<body>
+    <div class="leftmenu">
+        <ul>
+            <li><img src="http://www.euroastra.hu/files/images/logo_large@2x.png"></li>
+            <li><a href="/">Home</a></li>
+            <li><a href="/story">Create a new story</a></li>
+            <li><a href="/story">How it works</a></li>
+            <li><a href="/story">About</a></li>
+            <li><a href="/story">Contact</a></li>
+            <li><a href="http://codecool.com">Codecool</a></li>
+        </ul>
+    </div>
+    <div class="create">
+        <form action="/story">
+            <input type="image" src="http://www.freeiconspng.com/uploads/add-create-new-plus-icon-26.png"/> 
+        </form>
+    </div>
+    <form class="editform" action="/story{{ id }}" method="post">
+        <h1>User Story manager</h1>
+        <h2> {{ desc_text }}</h2>
+        Story Title<input type="text" value=" {{ sel_list[1] }} " id="title" name="title" />
+        User Story<textarea type="text" id="story" name="story">{{ sel_list[2] }}</textarea />
+        Acceptance Criteria<textarea type="text" id="criteria" name="criteria">{{ sel_list[3] }}</textarea>
+        Business Value<input type="number" value={{ sel_list[4] }} min="100" max="1500" step="100" id="business" name="business" required>
+        Estimation (h)<input type="number" value={{ sel_list[5] }} min="0.5" max="40" step="0.5" id="estimation" name="estimation" required>
+        Status
+        <select name="progress" required>
+            <option {{ selected[0]}} value="1. Planning">Planning</option>
+            <option {{ selected[1]}} value="2. TODO">TODO</option>
+            <option {{ selected[2]}} value="3. In Progress">In Progress</option>
+            <option {{ selected[3]}} value="4. Review">Review</option>
+            <option {{ selected[4]}} value="5. Done">Done</option>
+        </select>
+        <input id="submit" type="submit" value="Submit" />
+      </form>
+</body>

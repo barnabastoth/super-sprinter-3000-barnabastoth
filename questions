@@ -1,0 +1,4 @@
+update_save-t, hogy lehetett volna szebben megcsinalni, ne egyesével bekérni az inputokat, etc
+hogy kellett volna html formokat biztositani, hogy jo input jojjon vissza, enter ne szedje szet, etc
+form.html-ben a <selected> inputot, hogy kellett volna jobban vissza adni az update_show-nal
+html label használata

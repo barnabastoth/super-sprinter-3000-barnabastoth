@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <title>{{ title }}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='list.css') }}">
+</head>
+<body>
+    <table align="center" border="1"; class="topmenu">
+        <tr>
+            <td>ID</td>
+            <td>Story Title</td>
+            <td>User Story</td>
+            <td>Acceptance Criteria</td>
+            <td>Business Value</td>
+            <td>Estimation (h)</td>
+            <td>Status</td>
+            <td>Edit</td>
+            <td>delete</td>
+        </tr>
+    </table>
+    <div class="leftmenu">
+        <ul>
+            <li><img src="http://www.euroastra.hu/files/images/logo_large@2x.png"></li>
+            <li><a href="/">Home</a></li>
+            <li><a href="/story">Create a new story</a></li>
+            <li><a href="/story">How it works</a></li>
+            <li><a href="/story">About</a></li>
+            <li><a href="/story">Contact</a></li>
+            <li><a href="http://codecool.com">Codecool</a></li>
+            <li><form class="search" action="/search" method="POST">
+                 <span>Search by ID or anything</span><input type="text" id="search" name="search">
+                 <label><input id="searchbutton" type="submit" value="Go" /></label>
+                </form></li>
+            <li><form class="sortby" action="/sortby" method="POST">
+                <span>Sort the list by: </span>
+                <select name="sortby" required>
+                    <option value="ID">ID</option>
+                    <option value="Title">Title</option>
+                    <option value="User Story">User Story</option>
+                    <option value="Acceptance Criteria">Acceptance Criteria</option>
+                    <option value="Business Value">Business Value</option>
+                    <option value="Estimation (h)">Estimation (h)</option>
+                    <option value="Status">Status</option>
+                </select>
+                <label><input id="searchbutton" type="submit" value="Go" /></label>
+                </form></li> 
+        </ul>
+    </div>
+    <div class="create">
+        <form action="/story">
+            <input type="image" src="http://www.freeiconspng.com/uploads/add-create-new-plus-icon-26.png"/> 
+        </form>
+    </div>
+    <table class="mainlist" border="1">
+        {% for item in data_list %}
+        <tr>
+            {% for items in item %}
+            <td class="scrollit"> {{ items }}</td>
+            {% endfor %}
+            <td><a href= /story/{{ item[0] }}> <img src="http://www.argus-tv.com/wiki/images/e/eb/ICN_EDIT_GREEN.PNG" height="20px" width="20px"/></a></td>  
+            <td><form action="/delete/{{ item[0] }}" method="post">
+            <input type="image" src="http://www.freeiconspng.com/uploads/garbage-bin-png-12.png" height="20px" width="20px"/> 
+            </form>
+            </td>
+        </tr>
+            {% endfor %}
+    </table>
+</body>
+
